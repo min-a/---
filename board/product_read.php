@@ -1,0 +1,131 @@
+<?php
+include_once('./common.php');
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JANUBER Admin 제품관리</title>
+    
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
+<link href="css/admin_custom.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrapper" style="padding-top:30px;">
+	<!-- 공통:header -->
+	<?php include_once('head.php');?> 
+
+		<!--메인 컨텐츠-->
+		<?php
+		    //데이터베이스에서 선택한 제품의 상세내용 가져온다.
+		    $query = "select * from product_list where product_idx={$_GET['product_idx']}";
+		    $row = sql_fetch($query);
+	    ?>
+		<!--글 상세보기 -->
+		<form name="editFrm" role="form" method="POST" action="product_edit.php">
+		<input type="hidden" id="PRODUCT_IDX" name="PRODUCT_IDX" value="<?=$_GET['product_idx']?>">
+		<input type="hidden" id="CATEGORY_CODE" name="CATEGORY_CODE" value="<?=$row['CATEGORY_CODE']?>">
+          <div class="col-lg-6">
+              <div class="panel panel-default">
+				  <!--타이틀-->
+                  <div class="panel-heading">
+                      <h3 class="panel-title">
+					  <i class="fa fa-pencil fa-fw"></i>&#160; 제품 상세보기</h3>
+                  </div>
+				  <!--패널-->
+                  <div class="panel-body">
+                      <div class="panel_editor list-group">
+				  		<!--패널 폼-->
+                        
+							<!--제품명-->
+							<div class="input-group">
+								<span class="input-group-addon">제품명</span>
+								<input type="text" id="PRODUCT_NAME" readonly name="PRODUCT_NAME"  class="form-control" value="<?=$row[PRODUCT_NAME]?>">
+							</div>
+							<!--사용유무-->
+							<div class="input-group">
+								<span class="input-group-addon">사용유무</span>
+								<span class="form-control">
+									<label>사용<input type="radio" name="onOff" value="Y"></label>
+									<label>미사용<input type="radio" name="onOff" value="N"></label>
+								</span>
+							</div>
+							<!--서브사용유무-->
+							<div class="input-group">
+								<span class="input-group-addon">서브사용유무</span>
+								<span class="form-control">
+									<label>사용<input type="radio" name="onOff" value="Y"></label>
+									<label>미사용<input type="radio" name="onOff" value="N"></label>
+								</span>
+							</div>
+							<!--제품내용부분-->
+							<div class="form-group">
+								<span class="panel_editor_con_tit form-control">제품내용</span>
+								<span class="panel_editor_con form-control">
+									<input type="text" id="PRODUCT_CONTENT" readonly name="PRODUCT_CONTENT" class="form-control" value="<?=$row[PRODUCT_CONTENT]?>" >
+								</span>
+							</div>
+
+						<!--파일첨부-->
+						<div class="input-group">
+							<span class="input-group-addon">파일</span>
+							<span class="form-control" >
+								<label for="admin_file" class="sr-only">파일첨부</label>
+								<input type="file" id="admin_file" multiple value="file...">
+							</span>
+						</div>
+					
+                      </div>   
+                      <center><button type="button" class="admin_list btn" onclick="">제품서브정보</button></center>
+                  </div><!--/.panel_editor-->
+					<!--패널 에디터버튼-->
+					<div class="admin_editor form-group">
+						<button type="button" class="admin_modify btn" onclick="javascript:modifyCheck();">수정</button>
+						<button type="button" class="admin_delete btn" onclick="javascript:delCheck();">삭제</button>
+						<button type="button" class="admin_list btn" onclick="javascript:page_back();">목록</button>
+					</div> 								
+              	</div>
+			</div><!--/panel-->
+		</form>  			
+                    
+	<!-- 공통:tail -->
+	<?php include_once('tail.php'); ?>
+	
+         </div>	
+</body>
+</html>
+
+<script type="text/javascript">
+	//페이지 뒤로가기
+	function page_back(){
+		history.go(-1);
+	}//end page_back()
+	//제품수정 페이지로 이동
+	function modifyCheck(){
+		var frm = document.editFrm;
+		frm.action = "product_edit.php";
+		frm.submit();
+	}
+	//제품삭제 페이지로 이동
+	function delCheck(){
+		var frm = document.editFrm;
+		frm.action = "product_delete.php";
+		if(confirm("정말삭제하시겠습니까?")){
+			frm.submit();
+		}
+	}//end delCheck()
+</script>
+
+ 	 

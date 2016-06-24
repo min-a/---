@@ -1,0 +1,57 @@
+<?php
+include_once('./common.php');
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JANUBER Admin 제품관리</title>
+    
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
+<link href="css/admin_custom.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrapper" style="padding-top:30px;">
+	<!-- 공통:header -->
+	<?php include_once('head.php');?> 
+
+	<input type="button" value="카테고리 정보 수정" />
+
+    <?php
+	    //데이터베이스에서 제품리스트를 가져온다.
+	    $query = "select * from product_list where category_code='{$_GET['category_code']}'";
+	    $result = sql_query($query);
+         while($row=sql_fetch_array($result)){
+    ?>
+    <?=$row[PRODUCT_IDX] ?><br/>
+    <?=$row[CATEGORY_CODE] ?><br/>
+    <?=$row[PRODUCT_VIEW_NO] ?><br/>
+    <?=$row[PRODUCT_NAME] ?><br/>
+    <?=$row[PRODUCT_TITLE] ?><br/>
+    <?=$row[PRODUCT_CONTENT] ?><br/>
+    <?=$row[SUB_USE] ?><br/>
+    <?=$row[IS_USE] ?><br/>
+    <?=$row[MODIFY_DATE] ?><br/>
+    <?php
+     }
+    ?>         
+	
+	<!-- 공통:tail -->
+	<?php include_once('tail.php'); ?>
+	</div>
+</body>
+</html>
+
+ 	 

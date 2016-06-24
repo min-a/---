@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JANUBER Admin-1-팝업관리</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+	<!-- Custom CSS -->
+	<link href="css/common.css" rel="stylesheet">
+    <link href="css/admin_custom.css" rel="stylesheet">
+
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- 상단 헤더 -->
+        <nav class="admin_header navbar navbar-inverse navbar-fixed-top" role="navigation">
+			
+            <div class="navbar-header">
+                <!--가로 폭 작아지면 메뉴 버튼-->
+				<button type="button" class="admin_hamburger navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<!--로고-->
+                <a class="admin_logo navbar-brand" href="januber_admin.html"><img src="images/januber.png" alt="januber"></a>
+            </div>
+            <!-- 상단 우측 메뉴 -->
+            <ul class="admin_nav nav navbar-right top-nav">
+				<li><a href="januber_admin.html"><i class="fa fa-home"></i>&#32;홈</a></li>
+                <li><a class="hover_not" href="#"><i class="fa fa-user"></i><b>&#32;관리자</b>님 환영합니다.</a></li>
+                <li><a href="januber_admin_login.html"><i class="fa fa-sign-out"></i>&#32;로그아웃</li>
+            </ul>
+			
+            <!-- 사이드 메뉴 -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+			
+                <ul class="admin_menu nav navbar-nav side-nav">
+					<!--메뉴1: 팝업관리-->
+                    <li>
+                        <a href="januber_admin_popup.html"><i class="fa fa-comments-o"></i> 팝업관리 </a>
+                    </li>
+					<!--메뉴2: 제품관리-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu1"><i class="fa fa-cube"></i> 제품관리 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu1" class="collapse">
+                            <li class="ad_m">
+                                <a href="#">제품관리1</a>
+                            </li>
+                            <li class="ad_m">
+                                <a href="#">제품관리2</a>
+                            </li>
+                        </ul>
+                    </li>
+					<!--메뉴3: 게시판관리-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu2"><i class="fa fa-file-text-o"></i> 게시판관리 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu2" class="collapse">
+                            <li class="ad_m_tit">보안정보</li>
+								<li class="ad_m">
+									<a href="#">보안뉴스</a>
+								</li>
+								<li class="ad_m">
+									<a href="#">보안블로그</a>
+								</li>
+							<li class="ad_m_tit">고객지원</li>
+								<li class="ad_m">
+									<a href="januber_admin_notice.html">공지사항</a>
+								</li>
+								<li class="ad_m">
+									<a href="#">자료실</a>
+								</li>
+							<li class="ad_m_tit">인재채용</li>
+								<li class="ad_m">
+									<a href="#">채용안내</a>
+								</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+		
+		<!--메인 컨텐츠-->
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- 컨텐츠 헤더 -->
+                <div class="row">
+                    <div class="ad_c_header col-lg-12">
+						<span></span>
+						<!--타이틀-->
+						<div class="admin_title">
+							<h1 class="page-header">
+								팝업관리
+							</h1>
+							<!--경로-->
+							<p class="admin_route">
+								<i class="fa fa-home"></i> 관리자 홈 &#62; 팝업관리
+							</p>
+						</div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            
+				<!--컨텐츠 2col-->
+                <div class="row">
+					<!--1. 팝업 목록-->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+							<!--타이틀-->
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bars fa-fw"></i>&#160; 팝업 목록</h3>
+                            </div>
+							<!--패널-->
+                            <div class="panel-body">
+								<!--패널 내용-->
+                                <div class="table-responsive">
+                                    <table id="panel_table" class="panel_table_pop table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+												<th>선택</th>
+                                                <th>요약</th>
+                                                <th>상태</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+												<td><input type="checkbox" name="popup_list" id="pl01"></td>
+                                                <td><label for="pl01">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_on">ON</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl02"></td>
+                                                <td><label for="pl02">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_on">ON</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl03"></td>
+                                                <td><label for="pl03">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl04"></td>
+                                                <td><label for="pl04">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl05"></td>
+                                                <td><label for="pl05">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl06"></td>
+                                                <td><label for="pl06">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl07"></td>
+                                                <td><label for="pl07">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl08"></td>
+                                                <td><label for="pl08">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+											<tr>
+                                                <td><input type="checkbox" name="popup_list" id="pl09"></td>
+                                                <td><label for="pl09">2016 /01/10에 등록된 팝업입니다.</label></td>
+                                                <td class="pop_off">OFF</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+								<!--패널 페이징-->
+                                <div class="admin_paging text-center">
+                                    <i class="fa fa-arrow-circle-left"></i> 
+									<a>1</a> <a>2</a> <a>3</a> <a>4</a> <a>5</a>
+									<i class="fa fa-arrow-circle-right"></i>
+                                </div>
+								<!--패널 에디터버튼-->
+								<div class="admin_editor form-group">
+									<button class="admin_write btn">글쓰기</button>
+									<button class="admin_modify btn">수정</button>
+									<button class="admin_delete btn">삭제</button>
+								</div>
+								
+                            </div>
+                        </div>
+                    </div><!--/1-->
+					<!--2: 수정-->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+							<!--타이틀-->
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+								<i class="fa fa-pencil fa-fw"></i>&#160; 수정양식</h3>
+                            </div>
+							<!--패널-->
+                            <div class="panel-body">
+                                <div class="panel_editor list-group">
+								  <!--패널 폼-->
+                                  <form role="form">
+									<!--제목-->
+									<div class="input-group">
+										<span class="input-group-addon">요약</span>
+										<input type="text" class="form-control" placeholder="날짜를 포함한 요약을 적어주세요">
+									</div>
+									<!--상태-->
+									<div class="input-group">
+										<span class="input-group-addon">상태</span>
+										<span class="form-control">
+											<label>ON<input type="radio" name="onOff"></label>
+											<label>OFF<input type="radio" name="onOff"><label>
+										</span>
+									</div>
+									<!--내용수정부분-->
+									<div class="form-group">
+										<span class="panel_editor_con_tit form-control">미리보기</span>
+										<span class="panel_editor_con form-control">
+											<div>
+												ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ<br>
+												ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ<br>
+												ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ<br>
+												ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ<br>
+											</div>
+										</span>
+										
+										</form>
+									</div>
+								  </form>
+                                </div><!--/.panel_editor-->
+								
+								<!--패널 에디터버튼-->
+								<div class="admin_editor form-group">
+									<button type="submit" class="admin_modify btn">저장</button>
+									<button type="reset" class="admin_delete btn">취소</button>
+								</div> 
+                            </div>
+						</div><!--/panel-->
+                    </div><!--/2-->
+					
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid-->
+		
+			
+        </div>
+        <!-- /#page-wrapper -->
+		<!--푸터-->
+			<footer class="admin_footer">
+				COPYRIGHT 2016 &#169; JANUBER admin page
+			</footer>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

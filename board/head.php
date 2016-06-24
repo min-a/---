@@ -1,0 +1,85 @@
+ <?php
+ include_once('./common.php');
+ ?>
+        <nav class="admin_header navbar navbar-inverse navbar-fixed-top" role="navigation">
+			
+            <div class="navbar-header">
+                <!--가로 폭 작아지면 메뉴 버튼-->
+				<button type="button" class="admin_hamburger navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<!--로고-->
+                <a class="admin_logo navbar-brand" href="index.php"><img src="images/januber.png" alt="januber"></a>
+            </div>
+            <!-- 상단 우측 메뉴 -->
+            <ul class="admin_nav nav navbar-right top-nav">
+				<li><a href="januber_admin.html"><i class="fa fa-home"></i>&#32;홈</a></li>
+                <li><a class="hover_not" href="#"><i class="fa fa-user"></i><b>&#32;관리자</b>님 환영합니다.</a></li>
+                <li><a href="januber_admin_login.html"><i class="fa fa-sign-out"></i>&#32;로그아웃</a></li>
+            </ul>
+			
+            <!-- 사이드 메뉴 -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+			
+                <ul class="admin_menu nav navbar-nav side-nav">
+					<!--메뉴1: 팝업관리-->
+                    <li>
+                        <a href="januber_admin_popup.html"><i class="fa fa-comments-o"></i> 팝업관리 </a>
+                    </li>
+					<!--메뉴2: 제품관리-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu1"><i class="fa fa-cube"></i> 제품관리 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu1" class="collapse">
+                        	<li class="ad_m">
+                        	<?php
+	                        	//데이터베이스에서 카테고리를 가져온다.
+	                        	$query = "select category_code from product_category order by category_view_no";
+	                        	$result = sql_query($query);
+                        	
+                        		while($row=sql_fetch_array($result)){       
+                        	?>
+                        	<a href="product_List.php?category_code=<?=$row[category_code]?>"><?=$row[category_code] ?></a>
+                        	<?php
+                        		}
+                        	?>                                   	
+                            </li>                         
+                        </ul>
+                    </li>
+					<!--메뉴3: 게시판관리-->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu2"><i class="fa fa-file-text-o"></i> 게시판관리 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu2" class="collapse">
+                            <li class="ad_m_tit">보안정보</li>
+								<li class="ad_m">
+									<a href="#">보안뉴스</a>
+								</li>
+								<li class="ad_m">
+									<a href="#">보안블로그</a>
+								</li>
+							<li class="ad_m_tit">고객지원</li>
+								<li class="ad_m">
+									<a href="januber_admin_notice.html">공지사항</a>
+								</li>
+								<li class="ad_m">
+									<a href="#">자료실</a>
+								</li>
+							<li class="ad_m_tit">인재채용</li>
+								<li class="ad_m">
+									<a href="#">채용안내</a>
+								</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

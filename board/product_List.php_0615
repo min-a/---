@@ -1,0 +1,44 @@
+<?php
+include_once('./common.php');
+
+//데이터베이스에서 카테고리 설명 컨텐츠를 가져온다.
+$query = "select category_content from product_category where category_code='<?=$_GET[category_code]?>'";
+$result = sql_query($query);
+echo $query;
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JANUBER Admin 제품관리</title>
+    
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
+<link href="css/admin_custom.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrapper">
+	<!-- 공통:header -->
+	<?php include_once('head.php');?> 
+
+	<input type="button" value="카테고리 정보 수정" />
+	<?=$row[category_content]?>
+	
+	<!-- 공통:tail -->
+	<?php include_once('tail.php'); ?>
+	</div>
+</body>
+</html>
+
+ 	 
