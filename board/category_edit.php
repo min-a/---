@@ -18,6 +18,7 @@ include_once('./common.php');
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
 <link href="css/admin_custom.css" rel="stylesheet">
 
 <script type="text/javascript">

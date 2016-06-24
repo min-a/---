@@ -18,6 +18,7 @@ include_once('./common.php');
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
 <link href="css/admin_custom.css" rel="stylesheet">
 </head>
 
@@ -52,7 +53,7 @@ include_once('./common.php');
 				<!--컨텐츠 2col-->
                 <div class="row">
 					<!--1. 공지 목록-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">         
 							<!--패널-->
                             <div class="panel-body">

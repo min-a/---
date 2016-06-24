@@ -16,6 +16,7 @@
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     
 	<!-- Custom CSS -->
+	<link href="css/common.css" rel="stylesheet">
     <link href="css/admin_custom.css" rel="stylesheet">
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -117,8 +118,8 @@
                                         <i class="fa fa-plus-circle fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="panelcon huge">5</div>
-                                        <div class="panelcon">새로운 공지</div>
+                                        <div class="huge">5</div>
+                                        <div>새로운 공지</div>
                                     </div>
                                 </div>
                             </div>

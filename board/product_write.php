@@ -30,15 +30,9 @@ include_once('./common.php');
 		history.go(-1);
 	}//end page_back()
 
-	//버튼을 이용한 submit
-	function submit(){
-		var frm = document.writeForm;
-		frm.action = "product_write_ok.php";
-		frm.submit();
-	}
-	//제이쿼리를 이용한 데이터확인
+ 	//제이쿼리를 이용한 데이터확인
 	$(document).ready(function(){
-		$("form#writeForm").bind("#submit",function(){
+		$("form#writeForm").bind("submit",function(){
 			//제품명 빈값 체크
 			if($("input#PRODUCT_NAME").val().trim()==""){
 				alert("제품명을 입력해 주세요.");
@@ -51,10 +45,11 @@ include_once('./common.php');
 				$("input#PRODUCT_CONTENT").focus();
 				return false;
 			}
-		//
-			
+
+			//
 		});
-	});
+	}); 
+
 
 </script>
 
@@ -93,16 +88,16 @@ include_once('./common.php');
 							<div class="input-group">
 								<span class="input-group-addon">사용유무</span>
 								<span class="form-control">
-									<label>사용<input type="radio" name="is_use" value="Y"></label>
-									<label>미사용<input type="radio" name="is_use" value="N" checked></label>
+									<label>사용<input type="radio" name="IS_USE" value="Y"></label>
+									<label>미사용<input type="radio" name="IS_USE" value="N" checked></label>
 								</span>
 							</div>
 							<!--서브사용유무-->
 							<div class="input-group">
 								<span class="input-group-addon">서브사용유무</span>
 								<span class="form-control">
-									<label>사용<input type="radio" name="sub_use" id="sub_use" value="Y"></label>
-									<label>미사용<input type="radio" name="sub_use" id="sub_use" value="N" checked></label>
+									<label>사용<input type="radio" name="SUB_USE" value="Y"></label>
+									<label>미사용<input type="radio" name="SUB_USE" value="N" checked></label>
 								</span>
 							</div>
 							<!--제품내용부분-->
@@ -124,7 +119,7 @@ include_once('./common.php');
 								
 					<!--패널 에디터버튼-->
 					<div class="admin_editor form-group">
-						<button type="button" id="submit" class="admin_modify btn" onclick="javascript:submit();">저장</button>
+						<button type="submit" class="admin_modify btn">저장</button>
 						<button type="button" class="admin_delete btn" onclick="javascript:page_back();">취소</button>
 					</div> 
 

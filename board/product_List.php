@@ -18,6 +18,7 @@ include_once('./common.php');
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <!-- Custom CSS -->
+<link href="css/common.css" rel="stylesheet">
 <link href="css/admin_custom.css" rel="stylesheet">
 </head>
 
@@ -58,12 +59,12 @@ include_once('./common.php');
 				<!--컨텐츠 2col-->
                 <div class="row">
 					<!--1. 공지 목록-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">
 
                             <form action="product_write.php">
                             <!-- 제품추가 버튼 -->
-                            <input class="" type="hidden" id="CATEGORY_CODE" name="CATEGORY_CODE" value="<?=$row[CATEGORY_CODE]?>">
+                            <input type="hidden" id="CATEGORY_CODE" name="CATEGORY_CODE" value="<?=$row[CATEGORY_CODE]?>">
                 			<input type="submit" value="제품추가">
                 			</form>            
 							<!--패널-->
